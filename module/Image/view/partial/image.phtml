@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var \Image\Entity\Image $image
+ */
+$thumbnail = $image->getImage("admin");
+?>
+<div class="tableColumn">
+    <div data-attribute="entityId">
+        <span class="tableCellText"><?php echo $image->getImageId(); ?></span>
+    </div>
+    <div data-attribute="name">
+        <span class="tableCellText"><?php echo $image->getName(); ?></span>
+    </div>
+    <div data-attribute="image" data-type="image">
+        <span class="tableCellMeta">{"location":"images/gallery","current" : "<?php echo $thumbnail ? $thumbnail : ''; ?>
+            ", "prefix": "gallery"}</span>
+                    <span class="tableCellText">
+                        <?php echo $thumbnail ? '<img src="' . $this->basePath('images/gallery/' . $thumbnail) . '" width="100" height="70" alt="' . $this->translate("image") . '" />' : '-'; ?>
+                    </span>
+    </div>
+</div>

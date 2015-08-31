@@ -1,0 +1,42 @@
+<section id="infoWrapper"<?php echo !$this->useFull ? 'class="shortened"' : ''; ?>>
+    <img src="<?php echo $this->basePath('images/' . $this->sideBg . '-side-bg.png'); ?>" class="sideBackground"
+         alt="main background"/>
+
+    <div id="contact">
+        <ul>
+            <li>
+                <a href="https://goo.gl/maps/QIQEM" title="View in Google Maps" target="_blank">
+                    <img src="<?php echo $this->basePath('images/location-icon.png'); ?>" width="40" height="30"
+                         alt="location icon"/>
+                    <span><?php echo $this->getContent('location'); ?></span>
+                </a>
+            </li>
+            <li>
+                <img src="<?php echo $this->basePath('images/appointment-icon.png'); ?>" width="40" height="30"
+                     alt="appointment icon"/>
+                <span><?php echo $this->getContent('appointment'); ?></span>
+            </li>
+            <li>
+                <img src="<?php echo $this->basePath('images/telephone-icon.png'); ?>" width="40" height="30"
+                     alt="telephone icon"/>
+                <span><?php echo $this->getContent('telephone'); ?></span>
+            </li>
+            <li>
+                <img src="<?php echo $this->basePath('images/mobile-icon.png'); ?>" width="40" height="30"
+                     alt="mobile icon"/>
+                <span><?php echo $this->getContent('mobile'); ?></span>
+            </li>
+            <li>
+                <?php $email = $this->getContent('email'); ?>
+                <a href="mailto:<?php echo $email; ?>" target="_blank">
+                    <img src="<?php echo $this->basePath('images/email-icon.png'); ?>" width="40" height="30"
+                         alt="email icon"/>
+                    <span><?php echo $email ?></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <?php if($this->showQuote): ?>
+    <span class="quote"><?php echo $this->getContent('front_page_quote'); ?></span>
+    <?php endif; ?>
+</section>

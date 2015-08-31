@@ -1,0 +1,34 @@
+<?php echo $this->partial('info',array('sideBg' => 'galleries')); ?>
+<section id="main">
+    <h1>Photo Gallery</h1>
+    <aside id="galleries">
+        <ul>
+            <?php
+            foreach ($this->galleries as $gallery):
+                $name = $gallery->getName();
+                ?>
+                <li<?php echo $this->activeGallery->getName() == $name ? ' class="active"' : ""; ?>>
+                    <a href="<?php echo $this->url("galleries_index", array("galleryName" => $gallery->getUrl())); ?>"
+                       title="view <?php echo $name; ?>'s photos"><?php echo $name; ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </aside>
+    <section id="images">
+        <?php if ($this->activeGallery instanceof \Image\Entity\Gallery):
+            $images = $this->activeGallery->getImages()->toArray();
+            usort($images,function($a,$b){
+                return $a->getPosition() > $b->getPosition();
+            });
+            ?>
+            <ul>
+                <?php foreach($images as $galleryImage): ?>
+                <li>
+                    <img src="<?php echo $this->basePath('images/gallery/' . $galleryImage->getImage()->getImage()); ?>" class="magnifiable" />
+                    <span><?php echo $galleryImage->getTitle(); ?></span>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php  endif; ?>
+    </section>
+</section>

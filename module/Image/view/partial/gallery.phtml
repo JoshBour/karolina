@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var \Image\Entity\Gallery $gallery
+ */
+$galleryId = $gallery->getGalleryId();
+$galleryImages = $gallery->getImages();
+$parentGallery = $gallery->getParentGallery();
+
+?>
+<div class="tableColumn">
+    <div data-attribute="entityId">
+        <span class="tableCellText"><?php echo $galleryId; ?></span>
+    </div>
+    <div data-attribute="name">
+        <span class="tableCellText"><?php echo $gallery->getName(); ?></span>
+    </div>
+    <div data-attribute="images" data-type="join">
+        <span class="tableCellMeta">
+            <?php echo $this->joinSelect(array(
+                "list" => $this->images,
+                "selected" => $galleryImages,
+                "joinMethod" => "getImage",
+                "displayMethod" => "getName",
+                "identifierMethod" => "getImageId",
+                "columns" => array("image", "title", "position")
+            )); ?>
+        </span>
+        <span class="tableCellText">-</span>
+    </div>
+
+    <div data-attribute="parentGallery"
+         data-constraints='[{"type":"foreign","target":"Image\Entity\Gallery"}]' data-type="select">
+                    <span
+                        class="tableCellMeta"><?php echo $this->select($this->galleryAssoc, null, $parentGallery ? $parentGallery->getGalleryId() : null, true); ?></span>
+        <span class="tableCellText"><?php echo $parentGallery ? $parentGallery->getName() : '-'; ?></span>
+    </div>
+</div>

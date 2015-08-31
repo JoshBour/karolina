@@ -1,0 +1,7 @@
+<div class="totalItems invisible"><?php echo $this->paginator->getTotalItemCount(); ?></div>
+<?php
+foreach ($this->paginator as $service)
+    echo $this->partial('service', array(
+        "service" => $service
+    ));
+?>

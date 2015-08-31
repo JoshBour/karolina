@@ -1,0 +1,9 @@
+<div class="totalItems invisible"><?php echo $this->paginator->getTotalItemCount(); ?></div>
+<?php
+foreach ($this->paginator as $gallery)
+    echo $this->partial('gallery', array(
+        "gallery" => $gallery,
+        "galleryAssoc" => $this->galleryAssoc,
+        "images" => $this->images,
+    ));
+?>

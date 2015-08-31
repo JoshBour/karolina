@@ -1,0 +1,18 @@
+<?php echo $this->partial('info',array('sideBg' => 'services')); ?>
+<section id="main">
+    <h1>Our Services</h1>
+    <ul id="services">
+        <?php foreach ($this->services as $service):
+            ?>
+            <li>
+                <img src="<?php echo $this->basePath('images/services/' . $service->getThumbnail("list")); ?>"/>
+
+                <div class="serviceBody">
+                    <h2><?php echo $service->getName(); ?></h2>
+                    <span><?php echo $service->getSnippet(); ?></span>
+                    <a href="<?php echo $this->url("services_index/view", array("serviceUrl" => $service->getUrl())); ?>" class="readMore">Click here to read more.</a>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</section>

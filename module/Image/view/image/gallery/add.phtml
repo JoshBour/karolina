@@ -1,0 +1,48 @@
+<div class="formWrapper">
+    <h2>Add a new Gallery</h2>
+    <?php
+    echo $this->showMessages();
+
+    $form->prepare();
+    /**
+     * @var \Zend\Form\Fieldset $fieldset
+     */
+    $fieldset = $form->get('gallery');
+    $form->setAttribute('action', $this->url('galleries/add'));
+    echo $this->form()->openTag($form);
+    //echo $this->formHidden($form->get('security'));
+    ?>
+    <div class="element">
+        <?php
+        $name = $fieldset->get('name');
+        echo $this->formLabel($name);
+        echo $this->formElementErrors($name, array('class' => 'formError'));
+        echo $this->formInput($name);
+        ?>
+    </div>
+    <div class="element">
+        <?php
+        $images = $fieldset->get('images');
+        echo $this->formLabel($images);
+        echo $this->formElementErrors($images, array('class' => 'formError'));
+        echo $this->joinSelect(array(
+            "list" => $this->images,
+            "selected" => $this->encodedImages,
+            "joinMethod" => "getImage",
+            "displayMethod" => "getName",
+            "identifierMethod" => "getImageId",
+            "columns" => array("image", "title", "position")
+        ));
+        ?>
+    </div>
+    <div class="element">
+        <?php
+        $parentGallery = $fieldset->get('parentGallery');
+        echo $this->formLabel($parentGallery);
+        echo $this->formElementErrors($parentGallery, array('class' => 'formError'));
+        echo $this->formSelect($parentGallery);
+        ?>
+    </div>
+    <?php echo $this->formSubmit($form->get('submit')->setValue($this->translate('Add'))); ?>
+    <?php echo $this->form()->closeTag() ?>
+</div>

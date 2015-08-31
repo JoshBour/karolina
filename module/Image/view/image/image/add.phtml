@@ -1,0 +1,33 @@
+<div class="formWrapper">
+    <h2>Add a new Image</h2>
+    <?php
+    echo $this->showMessages();
+
+    $form->prepare();
+    /**
+     * @var \Zend\Form\Fieldset $fieldset
+     */
+    $fieldset = $form->get('image');
+    $form->setAttribute('action', $this->url('images/add'));
+    echo $this->form()->openTag($form);
+    //echo $this->formHidden($form->get('security'));
+    ?>
+    <div class="element">
+        <?php
+        $name = $fieldset->get('name');
+        echo $this->formLabel($name);
+        echo $this->formElementErrors($name, array('class' => 'formError'));
+        echo $this->formInput($name);
+        ?>
+    </div>
+    <div class="element">
+        <?php
+        $image = $fieldset->get('image');
+        echo $this->formLabel($image);
+        echo $this->formElementErrors($image, array('class' => 'formError'));
+        echo $this->formFile($image);
+        ?>
+    </div>
+    <?php echo $this->formSubmit($form->get('submit')->setValue($this->translate('Add'))); ?>
+    <?php echo $this->form()->closeTag() ?>
+</div>

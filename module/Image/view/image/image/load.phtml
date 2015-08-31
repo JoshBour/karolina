@@ -1,0 +1,7 @@
+<div class="totalItems invisible"><?php echo $this->paginator->getTotalItemCount(); ?></div>
+<?php
+foreach ($this->paginator as $image)
+    echo $this->partial('image', array(
+        "image" => $image,
+    ));
+?>

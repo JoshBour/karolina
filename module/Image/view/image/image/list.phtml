@@ -1,0 +1,21 @@
+<div class="tableWrapper" data-entity="images">
+    <?php echo $this->partial("table_options", array(
+        "paginator" => $this->paginator,
+        "location" => "images"
+    )); ?>
+    <div class="tableHeader">
+        <div class="tableColumn">
+            <span>Id</span>
+            <span class="sortable"><?php echo $this->translate("Name"); ?></span>
+            <span><?php echo $this->translate("Image"); ?></span>
+        </div>
+    </div>
+    <div class="tableBody">
+        <?php
+        foreach ($this->paginator as $image)
+            echo $this->partial('image', array(
+                "image" => $image,
+            ));
+        ?>
+    </div>
+</div>
