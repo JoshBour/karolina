@@ -1,0 +1,24 @@
+<div class="tableWrapper" data-entity="galleries">
+    <?php echo $this->partial("table_options", array(
+        "paginator" => $this->paginator,
+        "location" => "galleries"
+    )); ?>
+    <div class="tableHeader">
+        <div class="tableColumn">
+            <span>Id</span>
+            <span class="sortable"><?php echo $this->translate("Name"); ?></span>
+            <span><?php echo $this->translate("Images"); ?></span>
+            <span><?php echo $this->translate("Parent Gallery"); ?></span>
+        </div>
+    </div>
+    <div class="tableBody">
+        <?php
+        foreach ($this->paginator as $gallery)
+            echo $this->partial('gallery', array(
+                "gallery" => $gallery,
+                "galleryAssoc" => $this->galleryAssoc,
+                "images" => $this->images,
+            ));
+        ?>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<?php
+echo $this->doctype();
+$children = $this->viewModel()->getCurrent()->getChildren();
+$child = $children[0];
+$websiteName = $this->config()['website_name'];
+?>
+<html lang="en">
+<?php
+// The layout's head
+echo $this->partial("header", array('child' => $child, 'websiteName' => $websiteName));
+?>
+<body<?php echo ($child->bodyClass) ? ' class="' . $child->bodyClass . '"' : ''; ?>>
+<noscript>
+    <div id="nojs">
+        <?php echo $this->translate("Please enable javascript for the site to work properly."); ?>
+    </div>
+</noscript>
+<?php
+$route = $this->routeName();
+if ($child->activeRoute)
+    $route = $child->activeRoute;
+
+?>
+<header>
+    <div id="topWrapper">
+        <?php echo $route == "products_index" ? '<div id="productDataTitle" class="invisible">Product datasheet</div>': ""; ?>
+        <div id="logo">
+            <a href="<?php echo $this->url('home'); ?>"
+               title="<?php echo $this->translate("Karolina"); ?>">Logo</a>
+        </div>
+        <div id="translator">
+            <div id="google_translate_element"></div><script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({pageLanguage: 'el', includedLanguages: 'el,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                }
+            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="<?php echo $this->url('home'); ?>"<?php echo $route == "home" ? ' class="active"' : ''; ?>><?php echo $this->translate("Home"); ?></a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->url('about_index'); ?>"<?php echo $route == "about_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("About"); ?></a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->url('galleries_index'); ?>"<?php echo $route == "galleries_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Galleries"); ?></a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->url('services_index'); ?>"<?php echo $route == "services_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Services"); ?></a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->url('contact'); ?>"<?php echo $route == "contact" ? ' class="active"' : ''; ?>><?php echo $this->translate("Contact"); ?></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div id="content">
+    <?php echo $this->content; ?>
+</div>
+<?php
+echo $this->showMessages();
+
+// The layout's footer
+echo $this->partial("footer", array('child' => $child));
+?>
+</body>
+</html>

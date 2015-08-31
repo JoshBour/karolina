@@ -1,0 +1,22 @@
+<div class="tableWrapper" data-entity="posts">
+    <?php echo $this->partial("table_options", array(
+        "paginator" => $this->paginator,
+        "location" => "posts"
+    )); ?>
+    <div class="tableHeader">
+        <div class="tableColumn">
+            <span>Id</span>
+            <span class="sortable"><?php echo $this->translate("Title"); ?></span>
+            <span><?php echo $this->translate("Content"); ?></span>
+            <span><?php echo $this->translate("Thumbnail"); ?></span>
+        </div>
+    </div>
+    <div class="tableBody">
+        <?php
+        foreach ($this->paginator as $post)
+            echo $this->partial('post', array(
+                "post" => $post
+            ));
+        ?>
+    </div>
+</div>

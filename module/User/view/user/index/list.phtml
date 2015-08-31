@@ -1,0 +1,22 @@
+<div class="tableWrapper" data-entity="users">
+    <?php echo $this->partial("table_options", array(
+        "paginator" => $this->paginator,
+        "location" => "users"
+    )); ?>
+    <div class="tableHeader">
+        <div class="tableColumn">
+            <span>Id</span>
+            <span class="sortable"><?php echo $this->translate("Username"); ?></span>
+            <span><?php echo $this->translate("Password"); ?></span>
+            <span class="sortable"><?php echo $this->translate("Email"); ?></span>
+        </div>
+    </div>
+    <div class="tableBody">
+        <?php
+        foreach ($this->paginator as $user)
+            echo $this->partial('user', array(
+                "user" => $user
+            ))
+        ?>
+    </div>
+</div>

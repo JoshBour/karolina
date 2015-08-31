@@ -1,0 +1,70 @@
+<?php
+echo $this->doctype();
+$children = $this->viewModel()->getCurrent()->getChildren();
+$child = $children[0];
+$websiteName = $this->config()['website_name'];
+?>
+<html lang="en">
+<?php
+// The layout's head
+echo $this->partial("header_admin", array('child' => $child, 'websiteName' => $websiteName));
+?>
+<body<?php echo ($child->bodyClass) ? ' class="' . $child->bodyClass . '"' : ''; ?>>
+<noscript>
+    <div id="nojs">
+        <?php echo $this->translate("Please enable javascript for the site to work properly."); ?>
+    </div>
+</noscript>
+<?php if ($this->identity()):
+    $route = isset($child->activeRoute) ? $child->activeRoute : $this->routeName();
+    if (!$child->hideHeader):?>
+        <header>
+            <div id="topWrapper">
+                <div id="logo">
+                    <a href="<?php echo $this->url('home'); ?>"
+                       title="<?php echo $this->translate($websiteName); ?>"><?php echo $websiteName; ?></a>
+                </div>
+                <nav id="navigation">
+                    <ul>
+                        <li>
+                            <a href="<?php echo $this->url('posts'); ?>"<?php echo $route == "posts" ? ' class="active"' : ''; ?>><?php echo $this->translate("Posts"); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('services'); ?>"<?php echo $route == "services" ? ' class="active"' : ''; ?>><?php echo $this->translate("Services"); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('galleries'); ?>"<?php echo $route == "galleries" ? ' class="active"' : ''; ?>><?php echo $this->translate("Galleries"); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('images'); ?>"<?php echo $route == "images" ? ' class="active"' : ''; ?>><?php echo $this->translate("Images"); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('contents'); ?>"<?php echo $route == "contents" ? ' class="active"' : ''; ?>><?php echo $this->translate("Contents"); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('settings'); ?>"<?php echo $route == "settings" ? ' class="active"' : ''; ?>><?php echo $this->translate("Settings"); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('users'); ?>"<?php echo $route == "users" ? ' class="active"' : ''; ?>><?php echo $this->translate("Users"); ?></a>
+                        </li>
+                        <li><a
+                                href="<?php echo $this->url('logout'); ?>"><?php echo $this->translate("Logout"); ?></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    <?php
+    endif;
+endif; ?>
+<div id="content">
+    <?php echo $this->content; ?>
+</div>
+<?php
+echo $this->showMessages();
+
+// The layout's footer
+echo $this->partial("footer_admin", array('child' => $child));
+?>
+</body>
+</html>

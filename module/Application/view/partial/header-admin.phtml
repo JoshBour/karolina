@@ -1,0 +1,51 @@
+<head>
+    <?php
+    $child = $this->child;
+    $isMobile = $this->mobile();
+    $route = $this->routeName();
+    $pageTitle = (isset($child->pageTitle)) ? $websiteName . " - " . $child->pageTitle : $websiteName . " - " . ucfirst($route);
+    $follow = (isset($child->follow)) ? "noindex, nofollow" : "feed, follow, archieve";
+
+    // The website's title.
+    echo $this->headTitle($pageTitle);
+
+    // The meta tags
+    $description = isset($child->metaInfo['description']) ? $child->metaInfo['description'] : 'Info is a company that specializes in lighting technology and equipment';
+    $keywords = isset($child->metaInfo['keywords']) ? $child->metaInfo['keywords'] : 'info, lighting, products, equipment, led, lamp';
+
+    // We append everything to the headMeta
+    $this->headMeta()
+        ->setCharset('UTF-8')
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendName('description', $description)
+        ->appendName('keywords', $keywords)
+        ->appendName('robots', "noindex, nofollow")
+        ->appendName('language', 'en')
+        ->appendName('googlebot', "noindex, nofollow");
+    echo $this->headMeta();
+
+    // We add the favicon and our stylesheets
+    $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath('images/favicon.ico')))
+         ->headLink(array('rel' => 'gettext', 'type' => 'application/x-po', 'href' => $this->basePath('module/Application/language/'.$this->plugin('translate')->getTranslator()->getLocale().'.po')))
+        ->appendStylesheet($this->basePath('css/normalize'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
+        ->appendStylesheet($this->basePath('vendor/bettertable/css/bettertable'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
+        ->appendStylesheet($this->basePath('vendor/bettertable/css/jquery.selectbox'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
+        ->appendStylesheet($this->basePath('vendor/bettertable/css/jquery.datetimepicker'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
+        ->appendStylesheet($this->basePath('css/admin/admin-style'. (APPLICATION_ENV == "development" ? "":".min") . '.css'));
+
+    $this->headScript()->appendFile($this->basePath('js/modernizr.min.js'));
+
+//    if ($isMobile) {
+//        $this->headLink()->appendStylesheet($this->basePath('css/mobile.css'));
+//    }
+    echo $this->headLink();
+    echo $this->headScript();
+
+    // Some scripts the must be outputted first follow below
+    ?>
+    <script>
+        var baseUrl = '<?php echo $this->basePath(); ?>';
+        var isMobile = <?php echo $isMobile ? 'true':'false'; ?>;
+        console.log(baseUrl);
+    </script>
+</head>

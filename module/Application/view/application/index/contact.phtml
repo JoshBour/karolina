@@ -1,0 +1,60 @@
+<?php echo $this->partial('info', array('sideBg' => 'contact')); ?>
+
+<section id="main">
+    <h1>Contact Us</h1>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.271343247601!2d23.756362!3d37.9007199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1be046f66cbe9%3A0x2d0a2d9e55a3aca3!2zzpvOtc-Jz4YuIM6az43PgM-Bzr_PhSAxNjMsIM6Rz4HOs8-Fz4HOv8-Nz4DOv867zrcgMTY0IDUx!5e0!3m2!1sel!2sgr!4v1440294804348"
+        width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <div class="contactMeta">
+        <div class="module">
+            <h2>How to find us</h2>
+
+            <p>
+                <?php echo $this->getContent('office_instructions'); ?>
+            </p>
+        </div>
+        <div class="module">
+            <h2>Social Pages</h2>
+            <?php $fbPage = $this->getContent('facebook_page'); ?>
+            <a href="<?php echo $fbPage; ?>" target="_blank"><img
+                    src="<?php echo $this->basePath('images/fb-icon.png'); ?>"/><?php echo $fbPage; ?></a>
+        </div>
+    </div>
+    <?php
+    $form->prepare();
+    $form->setAttribute('action', $this->url('contact'));
+    $fieldset = $form->get('contact');
+
+    echo $this->form()->openTag($form);
+    ?>
+    <div class="element">
+        <?php
+        echo $this->formElementErrors($fieldset->get('sender'), array('class' => 'formError'));
+        echo $this->formLabel($fieldset->get('sender'));
+        echo $this->formInput($fieldset->get('sender'));
+        ?>
+    </div>
+
+    <div class="element">
+        <?php
+        echo $this->formElementErrors($fieldset->get('subject'), array('class' => 'formError'));
+        echo $this->formLabel($fieldset->get('subject'));
+        echo $this->formInput($fieldset->get('subject'));
+        ?>
+    </div>
+
+    <div class="element">
+        <?php
+        echo $this->formElementErrors($fieldset->get('body'), array('class' => 'formError'));
+        echo $this->formLabel($fieldset->get('body'));
+        echo $this->formTextarea($fieldset->get('body'));
+        ?>
+    </div>
+
+
+    <div class="element">
+        <?php echo $this->formSubmit($form->get('submit')->setValue($this->translate('Submit'))); ?>
+    </div>
+
+    <?php echo $this->form()->closeTag() ?>
+</section>

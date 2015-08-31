@@ -1,0 +1,15 @@
+<?php echo $this->partial('info', array('sideBg' => 'about')); ?>
+<section id="main">
+    <h1>About Our Office</h1>
+
+    <div id="about">
+        <div id="aboutInfo">
+            <img class="thumbnail" src="<?php echo $this->basePath('images/about-profile.png'); ?>"/>
+            <span><?php echo $this->getContent('signature'); ?></span>
+        </div>
+
+        <div id="aboutBody">
+            <?php echo $this->getContent("about_me"); ?>
+        </div>
+    </div>
+</section>
