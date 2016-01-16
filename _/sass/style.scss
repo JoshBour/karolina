@@ -1,0 +1,83 @@
+// https://stackoverflow.com/questions/12973508/page-specific-sass-files-and-duplication/12983664#12983664
+
+// vendor ----------------------------------------------------------------------
+
+// compass
+
+@import "compass";
+@import "compass/reset";
+//@import "compass/css3/box-shadow";
+//@import "compass/css3/border-radius";
+//@import "compass/css3/box-sizing";
+//@import "compass/css3/opacity";
+//@import "compass/layout/sticky-footer";
+//@import "compass/utilities";
+
+// grid
+
+@import "breakpoint";
+@import "susy";
+
+
+// application -----------------------------------------------------------------
+
+// base
+
+// for mixins, variables and helpers to aid in building
+// the application. no styling of actual elements should
+// go in base.
+@import "base/colors";
+@import "base/variables";
+@import "base/fonts";
+@import "base/mixins";
+
+// forms
+@import "forms/standard";
+
+// layout
+
+// generic site styles. this includes site chrome styles
+// such as the header, footer, flash messages, nav, as well
+// as common patterns used around the site like forms, type,
+// links, etc. the loose idea is that you could take these
+// styles and create a similar "layout" but it wouldn't
+// include contextual patterns like books, originals, etc.
+@import "layout/layout";
+@import "layout/header";
+@import "layout/footer";
+
+
+// modules
+
+// elements used on multiple pages that are loosely tied
+// to our domain and data structure. examples are dependent
+// on the needs of your site. as a general guideline, all
+// modules should be used on multiple pages. elements used
+// on a single page should be included in views.
+@import "modules/modules";
+
+
+// views
+
+// elements used on a single page. these styles are
+// often needed to help put finishing touches on a
+// page where modules didn't quite line up perfectly,
+// or where a page has completely unique elements.
+// these styles could often be abstracted to modules
+// but lack a reason to do so. keeping them here helps
+// explain their singular usage.
+@import "views/home";
+@import "views/about";
+@import "views/galleries";
+@import "views/services";
+@import "views/contact";
+@import "views/post";
+
+
+
+
+
+
+
+
+//@import "partials/normalize";

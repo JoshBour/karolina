@@ -1,0 +1,37 @@
+#post{
+  margin: 10px auto;
+
+  h2{
+    margin: 5px 0;
+  }
+
+  & > img{
+    float: left;
+    margin: 6px 10px 6px 0;
+    width:100%;
+    max-width: 300px;
+
+    @include breakpoint(max-width $narrow+100){
+      display:block;
+      margin:5px auto;
+      float:none;
+    }
+  }
+
+  .postBody{
+    @include breakpoint(max-width $narrow+100){
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 5px 10px;
+      border-left: 3px solid $lightOrange;
+    }
+
+    & > time{
+      margin: 5px 0;
+      display: inline-block;
+    }
+
+    p:first-of-type{
+      margin-top:5px;
+    }
+  }
+}

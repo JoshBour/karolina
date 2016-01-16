@@ -1,42 +1,43 @@
-<section id="infoWrapper"<?php echo !$this->useFull ? 'class="shortened"' : ''; ?>>
-    <img src="<?php echo $this->basePath('images/' . $this->sideBg . '-side-bg.png'); ?>" class="sideBackground"
+<div id="infoWrapper"<?php echo !$this->useFull ? 'class="shortened"' : ''; ?>>
+    <img src="<?php echo $this->basePath('public/images/' . $this->sideBg . '-side-bg.png'); ?>" class="sideBackground"
          alt="main background"/>
 
-    <div id="contact">
+    <section id="contact">
+        <h2>Πληροφοριες</h2>
         <ul>
             <li>
                 <a href="https://goo.gl/maps/QIQEM" title="View in Google Maps" target="_blank">
-                    <img src="<?php echo $this->basePath('images/location-icon.png'); ?>" width="40" height="30"
+                    <img src="<?php echo $this->basePath('public/images/location-icon.png'); ?>" width="40" height="30"
                          alt="location icon"/>
-                    <span><?php echo $this->getContent('location'); ?></span>
+                    <h3><?php echo $this->getContent('location'); ?></h3>
                 </a>
             </li>
             <li>
-                <img src="<?php echo $this->basePath('images/appointment-icon.png'); ?>" width="40" height="30"
+                <img src="<?php echo $this->basePath('public/images/appointment-icon.png'); ?>" width="40" height="30"
                      alt="appointment icon"/>
-                <span><?php echo $this->getContent('appointment'); ?></span>
+                <h3><?php echo $this->getContent('appointment'); ?></h3>
             </li>
             <li>
-                <img src="<?php echo $this->basePath('images/telephone-icon.png'); ?>" width="40" height="30"
+                <img src="<?php echo $this->basePath('public/images/telephone-icon.png'); ?>" width="40" height="30"
                      alt="telephone icon"/>
-                <span><?php echo $this->getContent('telephone'); ?></span>
+                <h3><?php echo $this->getContent('telephone'); ?></h3>
             </li>
             <li>
-                <img src="<?php echo $this->basePath('images/mobile-icon.png'); ?>" width="40" height="30"
+                <img src="<?php echo $this->basePath('public/images/mobile-icon.png'); ?>" width="40" height="30"
                      alt="mobile icon"/>
-                <span><?php echo $this->getContent('mobile'); ?></span>
+                <h3><?php echo $this->getContent('mobile'); ?></h3>
             </li>
             <li>
                 <?php $email = $this->getContent('email'); ?>
                 <a href="mailto:<?php echo $email; ?>" target="_blank">
-                    <img src="<?php echo $this->basePath('images/email-icon.png'); ?>" width="40" height="30"
+                    <img src="<?php echo $this->basePath('public/images/email-icon.png'); ?>" width="40" height="30"
                          alt="email icon"/>
-                    <span><?php echo $email ?></span>
+                    <h3><?php echo $email ?></h3>
                 </a>
             </li>
         </ul>
-    </div>
+    </section>
     <?php if($this->showQuote): ?>
-    <span class="quote"><?php echo $this->getContent('front_page_quote'); ?></span>
+    <span class="quote notranslate"><?php echo $this->getContent('front_page_quote'); ?></span>
     <?php endif; ?>
-</section>
+</div>

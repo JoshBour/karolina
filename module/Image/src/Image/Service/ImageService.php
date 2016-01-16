@@ -65,6 +65,7 @@ class ImageService extends BaseService
 
         // we rename the file with a unique name
         $newName = FileUtilService::rename($data['image']['image'], 'images/gallery', "gallery");
+
         foreach (ImageEntity::$thumbnailVariations as $variation) {
             $result = FileUtilService::resize($newName, 'images/gallery', $variation["width"], $variation["height"]);
             if (!$result) {
@@ -168,10 +169,10 @@ class ImageService extends BaseService
     private function deleteImages(ImageEntity $entity)
     {
         if ($image = $entity->getImage()) {
-            FileUtilService::deleteFile(FileUtilService::getFilePath($image, 'gallery', 'images'));
+            FileUtilService::deleteFile(FileUtilService::getFilePath($image, 'gallery', 'public/images'));
             foreach (ImageEntity::$thumbnailVariations as $key => $variation) {
                 $variationImg = $entity->getImage($key);
-                FileUtilService::deleteFile(FileUtilService::getFilePath($variationImg, 'gallery', 'images'));
+                FileUtilService::deleteFile(FileUtilService::getFilePath($variationImg, 'gallery', 'public/images'));
             }
         }
     }

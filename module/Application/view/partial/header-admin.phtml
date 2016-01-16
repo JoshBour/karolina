@@ -25,15 +25,15 @@
     echo $this->headMeta();
 
     // We add the favicon and our stylesheets
-    $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath('images/favicon.ico')))
+    $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath('public/images/favicon.ico')))
          ->headLink(array('rel' => 'gettext', 'type' => 'application/x-po', 'href' => $this->basePath('module/Application/language/'.$this->plugin('translate')->getTranslator()->getLocale().'.po')))
-        ->appendStylesheet($this->basePath('css/normalize'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
-        ->appendStylesheet($this->basePath('vendor/bettertable/css/bettertable'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
-        ->appendStylesheet($this->basePath('vendor/bettertable/css/jquery.selectbox'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
-        ->appendStylesheet($this->basePath('vendor/bettertable/css/jquery.datetimepicker'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
-        ->appendStylesheet($this->basePath('css/admin/admin-style'. (APPLICATION_ENV == "development" ? "":".min") . '.css'));
+        ->appendStylesheet($this->basePath('public/css/normalize'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
+        ->appendStylesheet($this->basePath('vendor/bettertable/css/bettertable.min.css'))
+        ->appendStylesheet($this->basePath('vendor/bettertable/css/jquery.selectbox.min.css'))
+        ->appendStylesheet($this->basePath('vendor/bettertable/css/jquery.datetimepicker.min.css'))
+        ->appendStylesheet($this->basePath('public/css/admin/admin-style.css'));
 
-    $this->headScript()->appendFile($this->basePath('js/modernizr.min.js'));
+    $this->headScript()->appendFile($this->basePath('public/js/modernizr.min.js'));
 
 //    if ($isMobile) {
 //        $this->headLink()->appendStylesheet($this->basePath('css/mobile.css'));

@@ -15,7 +15,7 @@ $thumbnail = $image->getImage("admin");
         <span class="tableCellMeta">{"location":"images/gallery","current" : "<?php echo $thumbnail ? $thumbnail : ''; ?>
             ", "prefix": "gallery"}</span>
                     <span class="tableCellText">
-                        <?php echo $thumbnail ? '<img src="' . $this->basePath('images/gallery/' . $thumbnail) . '" width="100" height="70" alt="' . $this->translate("image") . '" />' : '-'; ?>
+                        <?php echo $thumbnail ? '<img src="' . $this->basePath('public/images/gallery/' . $thumbnail) . '" width="100" height="70" alt="' . $this->translate("image") . '" />' : '-'; ?>
                     </span>
     </div>
 </div>

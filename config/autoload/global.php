@@ -19,5 +19,5 @@ return array(
         '/',
         '/contact',
     ),
-    "website_name" => "karolina"
+    "website_name" => "Glynou Dental Clinic"
 );

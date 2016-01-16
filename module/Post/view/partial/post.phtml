@@ -17,7 +17,7 @@ $thumbnail = $post->getThumbnail("admin");
     <div data-attribute="thumbnail" data-type="image">
         <span class="tableCellMeta">{"location":"images/posts","current" : "<?php echo $thumbnail ? $thumbnail : ''; ?>", "prefix": "post"}</span>
                     <span class="tableCellText">
-                        <?php echo $thumbnail ? '<img src="' . $this->basePath('images/posts/' . $thumbnail) . '" width="100" height="70" alt="' . $this->translate("post image") . '" />' : '-'; ?>
+                        <?php echo $thumbnail ? '<img src="' . $this->basePath('public/images/posts/' . $thumbnail) . '" width="100" height="70" alt="' . $this->translate("post image") . '" />' : '-'; ?>
                     </span>
     </div>
 </div>

@@ -57,7 +57,7 @@ class GalleryImage {
     }
 
     /**
-     * @return mixed
+     * @return Image
      */
     public function getImage()
     {

@@ -1,0 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700italic,700&subset=latin,greek,greek-ext);
+@import url(http://fonts.googleapis.com/css?family=Tangerine:400,700);
+//@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+
+$font-primary: Roboto, sans-serif;
+$base-font-size: 16px;
+
+$fontLight  : 300;
+$fontNormal: 400;
+$fontBold  : 500;
+$fontHeavy : 700;
+
+$mainFont : $fontNormal $base-font-size $font-primary;

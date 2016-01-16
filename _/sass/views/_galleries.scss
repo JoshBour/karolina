@@ -1,0 +1,114 @@
+
+#galleries {
+  //float:left;
+  //width: 18%;
+  text-align: right;
+  overflow: auto;
+  //margin-bottom: 10px;
+  border-bottom: 1px solid #ebebeb;
+  //@include inline-block-list(10px);
+
+  @include breakpoint(max-width $medium) {
+    text-align: left;
+  }
+
+  h2 {
+    display: inline-block;
+    float: left;
+    border-bottom: none;
+    margin: 0;
+
+    @include breakpoint(max-width $medium) {
+      float: none;
+      display: block;
+    }
+  }
+
+  nav {
+    @include breakpoint(max-width $medium) {
+      padding: 10px 0;
+    }
+
+    ul li {
+      margin-right: 10px;
+      display: inline-block;
+      background: $white;
+      line-height: 31px;
+      @include single-transition(all, 1s, linear);
+
+      &.active a {
+        color: $lightOrange;
+      }
+
+      &:first-of-type {
+      }
+
+      a {
+        //padding: 15px 10px;
+        display: block;
+
+        &:hover {
+          color: $lightOrange;
+        }
+      }
+    }
+  }
+}
+
+#imagePreview {
+  background: image-url('gallery-bg.png');
+  border: 1px solid $lightGrey;
+  @include box-shadow(0px 1px 1px $gray);
+
+  text-align: center;
+
+  #imagePreviewWrapper {
+    padding: 10px;
+
+    img {
+      width: 100%;
+      border: 1px solid $gray;
+      @include box-shadow(1px 1px 5px darken($lightGrey, 20));
+    }
+  }
+
+  span {
+    display: block;
+    /* color: white; */
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, .9);
+  }
+}
+
+#images {
+  padding: 10px;
+
+  @include breakpoint(max-width $medium) {
+    text-align: center;
+  }
+
+  ul li {
+    position: relative;
+    display:inline-block;
+    margin: 5px;
+    border: 2px solid $lightGrey;
+    @include box-shadow(1px 1px 5px $gray);
+
+    img {
+      max-width: 100px;
+      height: auto;
+      /* width: 100%; */
+      display: block;
+      cursor: pointer;
+    }
+
+    span {
+      display: none;
+    }
+
+    &.active, &:hover {
+      border-color: darken($lightOrange, 20);
+    }
+  }
+
+}

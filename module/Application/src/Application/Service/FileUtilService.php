@@ -14,6 +14,7 @@ use Application\Validator\File;
 use Application\Validator\Image;
 use Zend\File\Transfer\Transfer;
 use Zend\Filter\File\Rename;
+use Zend\Filter\File\RenameUpload;
 use Zend\Validator\File\Extension;
 
 class FileUtilService extends BaseService
@@ -50,7 +51,7 @@ class FileUtilService extends BaseService
 
     public static function resize($file, $location, $width, $height = null, $applyExtension = null)
     {
-        $path = ROOT_PATH . '/' . $location . '/';
+        $path = ROOT_PATH . '/public/' . $location . '/';
         $splitName = explode('.', $file);
         try {
             $img = new \abeautifulsite\SimpleImage($path . $file);
@@ -75,16 +76,16 @@ class FileUtilService extends BaseService
     public static function rename($file, $location, $prefix, $name = null)
     {
         $extension = pathinfo($file["name"], PATHINFO_EXTENSION);
-        $newName = $name ? $name . "." . $extension : uniqid($prefix . '-') . rand(1000000, 9999999) . "." . $extension;
-        $loc = ROOT_PATH . '/' . $location . '/' . $newName;
-        $renameOptions['target'] = $loc;
-        $renameOptions['overwrite'] = true;
+        $newName = $name ? $name : uniqid($prefix . '-') . rand(1000000, 9999999) . "." . $extension;
+        $loc = ROOT_PATH . '/public/' . $location . '/' . $newName;
         try {
-            $rename = new Rename($renameOptions);
-            $rename->filter($file);
-
+            $rename = new RenameUpload(array(
+                'target' => $loc,
+                'overwrite' => true,
+            ));
+            $filter = $rename->filter($file);
             $mode = 644;
-            if (!chmod($loc, octdec($mode))) return false;
+            if (!$filter || !chmod($loc, octdec($mode))) return false;
             return $newName;
         } catch (\Exception $e) {
             return false;

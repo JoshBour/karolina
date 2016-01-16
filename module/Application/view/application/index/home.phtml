@@ -1,13 +1,19 @@
-<?php echo $this->partial('info',array('sideBg' => 'home', 'useFull' => true, 'showQuote' => true)); ?>
-<ul id="posts">
-    <?php foreach ($this->posts as $post): ?>
-        <li>
-            <a href="<?php echo $this->url('post_view', array("postUrl" => $post->getUrl())); ?>">
-                <img
-                    src="<?php echo $this->basePath('images/posts/' . $post->getThumbnail("list")); ?>"
-                    class="postThumbnail" width="350" height="250"/>
-                <span class="postTitle"><?php echo $post->getTitle(); ?></span>
-            </a>
-        </li>
-    <?php endforeach; ?>
-</ul>
+<main id="homePage" role="main">
+    <?php echo $this->partial('info', array('sideBg' => 'home', 'useFull' => true, 'showQuote' => true)); ?>
+    <section id="posts">
+        <h2>Προσφατα νεα</h2>
+        <ul>
+            <?php foreach ($this->posts as $post): ?>
+                <li>
+                    <a href="<?php echo $this->url('post_view', array("postUrl" => $post->getUrl())); ?>">
+                        <img
+                            src="<?php echo $this->basePath('public/images/posts/' . $post->getThumbnail("list")); ?>"
+                            class="postThumbnail" width="350" height="250"/>
+
+                        <h3 class="postTitle"><?php echo $post->getTitle(); ?></h3>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+</main>

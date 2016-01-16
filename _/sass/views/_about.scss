@@ -1,0 +1,37 @@
+#aboutBody {
+  @include breakpoint(max-width $heroMedium) {
+    margin-left: 0;
+  }
+}
+
+#aboutInfo {
+  float: left;
+  width: 350px;
+  margin-right: 10px;
+
+  @include breakpoint(max-width $heroMedium) {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  img.thumbnail {
+    max-width: 350px;
+    margin-right: 10px;
+    height: auto;
+    display: block;
+    width: 100%;
+
+    @include breakpoint(max-width $heroMedium) {
+      margin: 0 auto;
+    }
+  }
+
+  span {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    font: bold 3em 'Tangerine', cursive;
+  }
+}

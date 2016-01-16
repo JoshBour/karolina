@@ -13,7 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Image{
 
     public static $thumbnailVariations = array(
-        "admin" => array("width" => 100, "height" => 70));
+        "admin" => array("width" => 100, "height" => 70),
+        "list" => array('width' => 320, "height" => 240));
 
     /**
      * @ORM\OneToMany(targetEntity="GalleryImage", mappedBy="image", cascade={"persist", "remove"}, orphanRemoval=TRUE)

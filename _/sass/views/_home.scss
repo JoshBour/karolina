@@ -1,0 +1,111 @@
+#homePage #infoWrapper{
+
+
+  .quote{
+    /* margin-top: 30px; */
+    width: 30%;
+    min-width: 340px;
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    /* margin-left: 25px; */
+    display: block;
+    font: bold 2.5em 'Tangerine', cursive;
+
+    @include breakpoint(max-height 900px){
+      font-size:2em;
+    }
+
+    @include breakpoint(max-height 760px){
+      display:none;
+    }
+
+    @include breakpoint(max-width $heroMedium){
+      width: 100%;
+      left: 0;
+      min-width: 0;
+      padding: 0 2%;
+    }
+
+    @include breakpoint(max-width $wide){
+      display:none;
+    }
+  }
+
+}
+
+
+#homePage #posts{
+  @include clearfix;
+  @include horizontal-list(1%);
+  padding: 10px 3%;
+
+  h2{
+    margin-bottom:10px;
+  }
+  ul {
+    text-align: center;
+
+    li {
+      width:25%;
+      @include single-transition(opacity, .2s, ease-in-out);
+
+      a {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        max-width: 400px;
+
+        .postTitle{
+          position:absolute;
+          bottom:0;
+          width:100%;
+          padding:10px 0;
+          text-align:center;
+          font-size: 1em;
+          font-weight: $fontNormal;
+          background-color: rgba($white, 0.85);
+          margin-bottom:0;
+
+          @include breakpoint(max-width $narrow){
+            font-size:.9em;
+          }
+        }
+
+        .postThumbnail{
+          max-width: 400px;
+          height: auto;
+          display: block;
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+
+      @include breakpoint(max-width $wide){
+        width: 46%;
+        padding: 0;
+        margin: 2% 2%;
+      }
+
+      @include breakpoint(max-width $heroMedium){
+        width: 100%;
+        margin: 0 0 5% 0;
+      }
+    }
+  }
+
+}
+
+#posts li.lastInlineItem{
+  margin-right:0;
+}
+
+#posts li:last-of-type{
+  margin-right:0;
+}
+
+.postTitle, .categoryName, .productName{
+  display:block;
+  margin-top: 8px;
+  font-size: 14px;
+}

@@ -1,15 +1,18 @@
-<?php echo $this->partial('info',array('sideBg' => 'home')); ?>
-<div id="post">
-    <img class="postThumbnail" src="<?php echo $this->basePath('images/posts/' . $post->getThumbnail()); ?>"
-         alt="post thumbnail"/>
+<?php
+$time = $post->getPostDate();
+?>
+<main role="main">
+    <?php echo $this->partial('info', array('sideBg' => 'home')); ?>
+    <div class="contentWrapper">
+        <article id="post">
+            <h2><?php echo $post->getTitle(); ?></h2>
+            <img src="<?php echo $this->basePath('public/images/posts/' . $post->getThumbnail()); ?>"
+                 alt="post thumbnail"/>
 
-    <div class="postHeader">
-        <span class="postDate"><?php echo $post->getPostDate()->format('n F, Y'); ?></span>
-
-        <h1><?php echo $post->getTitle(); ?></h1>
+            <section class="postBody">
+                <time datetime="<?php echo $time->format('c');?>"><?php echo $time->format('n F, Y'); ?></time>
+                <?php echo $post->getContent(); ?>
+            </section>
+        </article>
     </div>
-
-    <div class="postBody">
-        <?php echo $post->getContent(); ?>
-    </div>
-</div>
+</main>

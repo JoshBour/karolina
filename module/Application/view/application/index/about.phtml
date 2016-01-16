@@ -1,10 +1,11 @@
-<?php echo $this->partial('info', array('sideBg' => 'about')); ?>
-<section id="main">
-    <h1>About Our Office</h1>
+<main id="aboutPage">
+    <?php echo $this->partial('info', array('sideBg' => 'about')); ?>
+    <div class="contentWrapper">
+        <h2>Σχετικα με μας</h2>
 
-    <div id="about">
         <div id="aboutInfo">
-            <img class="thumbnail" src="<?php echo $this->basePath('images/about-profile.png'); ?>"/>
+            <img class="thumbnail" src="<?php echo $this->basePath('public/images/about-profile.png'); ?>" width="350"
+                 height="232"/>
             <span><?php echo $this->getContent('signature'); ?></span>
         </div>
 
@@ -12,4 +13,4 @@
             <?php echo $this->getContent("about_me"); ?>
         </div>
     </div>
-</section>
+</main>

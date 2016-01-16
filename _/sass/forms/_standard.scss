@@ -1,0 +1,59 @@
+.standardForm {
+  margin: 0 auto;
+  /*padding:7px;*/
+  overflow: hidden;
+  text-align: left;
+
+  .element {
+    margin-bottom: 20px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  input, select, textarea {
+    vertical-align: middle;
+    width: 100%;
+    padding: 10px 0;
+    /* border-radius: 5px; */
+    outline: none;
+    border: 1px solid #d9d9d9;
+    color: black;
+    text-indent: 5px;
+    font: $mainFont;
+  }
+
+  label {
+    color:#555;
+    display: block;
+    vertical-align: middle;
+    padding: 10px 0;
+  }
+
+  input{
+    &[name="submit"] {
+      float: right;
+      text-indent: 0;
+      width: 120px;
+    }
+
+    &[type="checkbox"] {
+      box-shadow: none;
+    }
+  }
+
+  input:focus, .standardForm textarea:focus {
+    border-color: #aaa;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 200px;
+  }
+
+  .formError {
+    padding: 5px;
+    color: red;
+  }
+}

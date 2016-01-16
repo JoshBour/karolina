@@ -184,10 +184,10 @@ class PostService extends BaseService
     private function deleteImages(PostEntity $entity)
     {
         if ($thumbnail = $entity->getThumbnail()) {
-            FileUtilService::deleteFile(FileUtilService::getFilePath($thumbnail, 'posts', 'images'));
+            FileUtilService::deleteFile(FileUtilService::getFilePath($thumbnail, 'posts', 'public/images'));
             foreach (PostEntity::$thumbnailVariations as $key => $variation) {
                 $variationImg = $entity->getThumbnail($key);
-                FileUtilService::deleteFile(FileUtilService::getFilePath($variationImg, 'posts', 'images'));
+                FileUtilService::deleteFile(FileUtilService::getFilePath($variationImg, 'posts', 'public/images'));
             }
         }
     }

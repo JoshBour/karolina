@@ -21,46 +21,57 @@ if ($child->activeRoute)
     $route = $child->activeRoute;
 
 ?>
-<header>
-    <div id="topWrapper">
-        <?php echo $route == "products_index" ? '<div id="productDataTitle" class="invisible">Product datasheet</div>': ""; ?>
-        <div id="logo">
-            <a href="<?php echo $this->url('home'); ?>"
-               title="<?php echo $this->translate("Karolina"); ?>">Logo</a>
-        </div>
+<header id="mainHeader" role="banner">
+    <div id="topWrapper" class="group">
+        <h1 class="offscreen">glynoudentalclinic.gr</h1>
+
+        <a href="<?php echo $this->url('home'); ?>" title="Glynou Dental Clinic" id="logo"><img
+                src="<?php echo $this->basePath('public/images/logo.png'); ?>" alt="glynoudentalclinic logo"></a>
+
+        <a href="#" id="menuIcon" title="Δείτε το μενού πλοήγησης"></a>
+
         <div id="translator">
-            <div id="google_translate_element"></div><script type="text/javascript">
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">
                 function googleTranslateElementInit() {
-                    new google.translate.TranslateElement({pageLanguage: 'el', includedLanguages: 'el,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'el',
+                        includedLanguages: 'el,en',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                    }, 'google_translate_element');
                 }
-            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </script>
+            <script type="text/javascript"
+                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="<?php echo $this->url('home'); ?>"<?php echo $route == "home" ? ' class="active"' : ''; ?>><?php echo $this->translate("Home"); ?></a>
+                    <a href="<?php echo $this->url('home'); ?>"<?php echo $route == "home" ? ' class="active"' : ''; ?>><?php echo $this->translate("Αρχική"); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo $this->url('about_index'); ?>"<?php echo $route == "about_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("About"); ?></a>
+                    <a href="<?php echo $this->url('about_index'); ?>"<?php echo $route == "about_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Πληροφορίες"); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo $this->url('galleries_index'); ?>"<?php echo $route == "galleries_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Galleries"); ?></a>
+                    <a href="<?php echo $this->url('galleries_index'); ?>"<?php echo $route == "galleries_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Φωτογραφίες"); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo $this->url('services_index'); ?>"<?php echo $route == "services_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Services"); ?></a>
+                    <a href="<?php echo $this->url('services_index'); ?>"<?php echo $route == "services_index" ? ' class="active"' : ''; ?>><?php echo $this->translate("Υπηρεσίες"); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo $this->url('contact'); ?>"<?php echo $route == "contact" ? ' class="active"' : ''; ?>><?php echo $this->translate("Contact"); ?></a>
+                    <a href="<?php echo $this->url('contact'); ?>"<?php echo $route == "contact" ? ' class="active"' : ''; ?>><?php echo $this->translate("Επικοινωνία"); ?></a>
                 </li>
             </ul>
         </nav>
     </div>
 </header>
-<div id="content">
-    <?php echo $this->content; ?>
-</div>
 <?php
-echo $this->showMessages();
+if ($this->flashMessenger()->hasMessages()): ?>
+    <section class="flash">
+        <?php echo $this->showMessages(); ?>
+    </section>
+<?php endif;
+echo $this->content;
 
 // The layout's footer
 echo $this->partial("footer", array('child' => $child));

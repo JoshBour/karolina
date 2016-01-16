@@ -20,10 +20,8 @@ echo $this->partial("header_admin", array('child' => $child, 'websiteName' => $w
     if (!$child->hideHeader):?>
         <header>
             <div id="topWrapper">
-                <div id="logo">
-                    <a href="<?php echo $this->url('home'); ?>"
-                       title="<?php echo $this->translate($websiteName); ?>"><?php echo $websiteName; ?></a>
-                </div>
+                <a id="logo" href="<?php echo $this->url('home'); ?>"
+                   title="<?php echo $this->translate($websiteName); ?>"><img src="<?php echo $this->basePath('public/images/admin-logo.png'); ?>" /></a>
                 <nav id="navigation">
                     <ul>
                         <li>

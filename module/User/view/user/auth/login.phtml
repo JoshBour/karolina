@@ -30,14 +30,6 @@
         ?>
     </div>
 
-    <div class="element">
-        <?php
-        echo $this->formElementErrors($fieldset->get('remember'), array('class' => 'formError'));
-        echo $this->formLabel($fieldset->get('remember'));
-        echo $this->formCheckbox($fieldset->get('remember'));
-        ?>
-    </div>
-
     <?php echo $this->formSubmit($form->get('submit')->setValue($this->translate('Login'))); ?>
 
     <?php echo $this->form()->closeTag() ?>

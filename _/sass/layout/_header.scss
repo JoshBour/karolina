@@ -1,0 +1,200 @@
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-tooltip {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+header#mainHeader {
+  height: 60px;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid $lightGrey;
+  background-color:$white;
+  @include text-shadow(lighten($lightGrey,20) 1px 1px 1px);
+  @include box-shadow(rgba($black,.1) 0 0 4px,rgba($black,.1) 0 4px 8px );
+
+  #topWrapper {
+    //@include clearfix;
+    position:relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1%;
+
+    #menuIcon {
+      position: absolute;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      top: 15px;
+      background: transparent image-url('menu-open-icon.png') no-repeat center center;
+      @include single-transition(transform, .2s, linear);
+      display: none;
+
+      @include breakpoint(max-width $wide) {
+        display: block;
+      }
+
+      &:hover {
+        @include rotate(90deg);
+      }
+    }
+
+    .navUnderline{
+      position:absolute;
+      display:block;
+      height:8px;
+      background-color:#30302e;
+    }
+
+    #navToggle {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+      display:none;
+    }
+
+    #logo {
+      display: inline;
+      float: left;
+
+      //a {
+      //  height: 33px;
+      //  margin: 13px 18px 0 0;
+      //  display: block;
+      //  width: 244px;
+      //  background: transparent image-url('logo.png') no-repeat 0 0;
+      //  text-indent: -9999px;
+      //
+      //
+      //}
+
+      img{
+        @include breakpoint(max-width $narrow){
+          height: 40px;
+          margin-top: 10px;
+
+        }
+      }
+
+    }
+
+    #translator{
+      float:left;
+      margin-top: 18px;
+    }
+
+    #google_translate_element{
+      display: inline-block;
+      vertical-align: top;
+      /*margin-right: 27px;*/
+    }
+
+    .goog-te-gadget-simple {
+      padding: 5px !important;
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .goog-te-gadget-simple .goog-te-menu-value{
+      color:black !important;
+    }
+
+    .goog-te-gadget-icon{
+      display:none !important;
+    }
+
+    nav{
+      @include horizontal-list(7px);
+      float: right;
+      //@include single-transition(display,.5s,linear);
+
+      @include breakpoint(max-width $wide) {
+        //@include single-transition(all, 1s, ease-out);
+        display: none;
+        position: absolute;
+        width: 215px;
+        top: 60px;
+        right: 0;
+        margin: 0;
+        border: 1px solid $lightGrey;
+        border-top: none;
+        z-index: 999;
+        text-align: left;
+        background-color: #333;
+        @include box-shadow($lightBlack 1px 1px 5px);
+      }
+
+        li {
+          position: relative;
+
+          @include breakpoint(max-width $wide) {
+            float: none;
+            padding: 0;
+            white-space: normal;
+          }
+
+          &:hover a.active{
+            border-bottom:none;
+
+          }
+
+          a {
+            //margin-left: 13px;
+            //padding: 17px 9px 16px 25px;
+            background: transparent image-url('tooth-icon.png') no-repeat 10px;
+            display: inline-block;
+            padding:0 15px 0 25px;
+            color: black;
+            font:$fontLight 1.2em/59px $font-primary;
+            letter-spacing: -.01em;
+            //font: lighter 20px 'Source Sans Pro', sans-serif;
+            vertical-align: middle;
+            @include single-transition(all,.2s,linear);
+
+            @include breakpoint(max-width $wide) {
+              height: auto;
+              display: block;
+              padding: 0 7px;
+              margin-left: 0;
+              //border-bottom: 1px solid #555;
+              //border-top: 1px solid #222;
+              color: $white;
+              font-size: 1em;
+              line-height: 3em;
+              @include text-shadow(1px -1px 1px $lightBlack);
+            }
+
+            &.active , &:hover{
+              color: $orange;
+              background-image:image-url('tooth-active-icon.png');
+              background-color: $almostWhite;
+              /*border-bottom:1px solid;*/
+
+              @include breakpoint(max-width $wide) {
+                background-image:image-url('tooth-icon.png');
+                color: $black;
+                padding-left:25px;
+                @include text-shadow(1px -1px 1px lighten($lightGrey,20));
+              }
+            }
+          } // a
+        } // li
+    } // nav
+
+
+  }
+
+
+
+
+}

@@ -173,10 +173,10 @@ class ServiceService extends BaseService{
     private function deleteImages(ServiceEntity $entity)
     {
         if ($thumbnail = $entity->getThumbnail()) {
-            FileUtilService::deleteFile(FileUtilService::getFilePath($thumbnail, 'services', 'images'));
+            FileUtilService::deleteFile(FileUtilService::getFilePath($thumbnail, 'services', 'public/images'));
             foreach (ServiceEntity::$thumbnailVariations as $key => $variation) {
                 $variationImg = $entity->getThumbnail($key);
-                FileUtilService::deleteFile(FileUtilService::getFilePath($variationImg, 'services', 'images'));
+                FileUtilService::deleteFile(FileUtilService::getFilePath($variationImg, 'services', 'public/images'));
             }
         }
     }

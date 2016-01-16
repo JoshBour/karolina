@@ -25,11 +25,14 @@
     echo $this->headMeta();
 
     // We add the favicon and our stylesheets
-    $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath('images/favicon.ico')))
+    $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath('public/images/favicon.ico')))
 //         ->headLink(array('rel' => 'gettext', 'type' => 'application/x-po', 'href' => $this->basePath('module/Application/language/'.$this->plugin('translate')->getTranslator()->getLocale().'.po')))
 //        ->prependStylesheet($this->basePath('css/print'. (APPLICATION_ENV == "development" ? "":".min") . '.css'),'print')
-        ->prependStylesheet($this->basePath('css/style'. (APPLICATION_ENV == "development" ? "":".min") . '.css'))
-        ->prependStylesheet($this->basePath('css/normalize'. (APPLICATION_ENV == "development" ? "":".min") . '.css'));
+        ->prependStylesheet($this->basePath('public/css/style.css'));
+
+    $this->headScript()->appendFile($this->basePath('public/js/modernizr.min.js'));
+
+    echo $this->headScript();
 
     echo $this->headLink();
 

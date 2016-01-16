@@ -1,0 +1,163 @@
+.contentWrapper{
+  width: 85%;
+  margin: 1% auto;
+  @include single-transition(width, .5s, linear);
+
+  h2{
+    margin: 1em 0;
+  }
+
+  @include breakpoint(max-width $wide){
+    width: 95%;
+  }
+}
+
+#infoWrapper {
+  width: 100%;
+  min-height: 300px;
+  position:relative;
+  //min-height:550px;
+  background: transparent image-url('home-background.jpg') no-repeat center top;
+  @include background-size(cover);
+
+  h2{
+    border-bottom:none;
+    //color: black;
+  }
+
+  h3 {
+    display: inline-block;
+  }
+
+  ul li {
+    padding: 5px 0;
+    width: 100%;
+    max-width: 400px;
+    /*max-height: 55px;*/
+    /* margin-top: 13px; */
+    font-size: 1.1em;
+    border: 3px solid rgba(0,0,0,.1);
+    border-bottom: none;
+    background-color: rgba(255,255,255,.3);
+    @include single-transition(max-width,.2s, linear);
+
+    img{
+      margin:0 5px;
+    }
+
+    &:last-of-type{
+      border-bottom:3px solid rgba(0,0,0,.1);
+    }
+
+    &:hover {
+      background-color: rgba(255,255,255,0.5);
+    }
+
+    @include breakpoint(max-height 850px){
+      font-size:1em;
+    }
+
+    @include breakpoint(max-width $heroMedium){
+      max-width:100%;
+      font-size:1em;
+    }
+  }
+
+  .sideBackground{
+    /* width: 100%; */
+    height: auto;
+    position: absolute;
+    right: 3%;
+    bottom: 0;
+    max-height: 600px;
+
+    @include breakpoint(max-width $heroMedium){
+      display:none;
+    }
+
+  }
+
+  #contact{
+    width: 20%;
+    position: absolute;
+    top: 7%;
+    left: 3%;
+    min-width: 300px;
+
+    @include breakpoint(max-height 850px){
+      top:5%;
+    }
+
+    @include breakpoint(max-width $heroMedium){
+      width:100%;
+      left:0;
+      padding: 0 5px;
+    }
+  }
+
+
+
+  &.shortened{
+    #contact{
+      top:5%;
+    }
+    .sideBackground{
+      height: 100%;
+      right:5%;
+    }
+  }
+
+}
+
+.block {
+  text-align: center;
+  /*min-height: 800px;*/
+
+  overflow: hidden;
+  height: 100%;
+  /* May want to do this if there is risk the container may be narrower than the element inside */
+  white-space: nowrap;
+}
+
+/* The ghost, nudged to maintain perfect centering */
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can also be of any width and height */
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  /*width: 300px;*/
+}
+
+.flex{
+  flex-flow: column;
+  display: flex;
+  height: 100%;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* This is used to hide elements from the screen but make them still available for screen readers */
+.offscreen
+{
+  position: absolute;
+  clip: rect(1px 1px 1px 1px); /* for Internet Explorer */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}

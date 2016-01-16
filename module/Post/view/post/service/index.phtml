@@ -1,18 +1,24 @@
-<?php echo $this->partial('info',array('sideBg' => 'services')); ?>
-<section id="main">
-    <h1>Our Services</h1>
-    <ul id="services">
-        <?php foreach ($this->services as $service):
-            ?>
-            <li>
-                <img src="<?php echo $this->basePath('images/services/' . $service->getThumbnail("list")); ?>"/>
+<main role="main">
+    <?php echo $this->partial('info', array('sideBg' => 'services')); ?>
+    <div class="contentWrapper">
+        <h2>Υπηρεσιες</h2>
+        <ul id="services">
+            <?php foreach ($this->services as $service):
+                ?>
+                <li>
+                    <div class="serviceInfo">
+                        <img
+                            src="<?php echo $this->basePath('public/images/services/' . $service->getThumbnail("list")); ?>"/>
+                        <a href="<?php echo $this->url("services_index/view", array("serviceUrl" => $service->getUrl())); ?>"
+                           class="readMore">Πατήστε εδώ για πληροφορίες.</a>
+                    </div>
+                    <div class="serviceBody">
+                        <h3><?php echo $service->getName(); ?></h3>
 
-                <div class="serviceBody">
-                    <h2><?php echo $service->getName(); ?></h2>
-                    <span><?php echo $service->getSnippet(); ?></span>
-                    <a href="<?php echo $this->url("services_index/view", array("serviceUrl" => $service->getUrl())); ?>" class="readMore">Click here to read more.</a>
-                </div>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</section>
+                        <div class="serviceSnippet"><?php echo $service->getSnippet(); ?></div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</main>
